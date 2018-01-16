@@ -13,7 +13,7 @@ const sequelize = new Sequelize('mop_backend', 'root', 'dzbrasno', {
 const User = sequelize.define('user', {
     name: { type: Sequelize.STRING, allowNull: false },
     surname: { type: Sequelize.STRING, allowNull: false },
-    email: { type: Sequelize.STRING, allowNull: false },
+    email: { type: Sequelize.STRING, allowNull: false, unique: true },
     isAdmin: { type: Sequelize.BOOLEAN, allowNull: false }
 });
 

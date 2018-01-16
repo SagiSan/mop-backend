@@ -28,8 +28,8 @@ router.get("/login", (req, res) => {
 router.post("/register", (req, res, next) => {
     let user = req.body;
     user.isAdmin = false;
-    db.User.findOrCreate(user).then(() => {
-        res.send("OK");
+    db.User.create(user).then((userCreated) => {
+        res.send(userCreated);
     })
         .catch(errorCatcher(res, true));
 });
