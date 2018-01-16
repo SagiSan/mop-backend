@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('mop_backend', 'root', 'dzbrasno', {
-    host: 'localhost',
+const sequelize = new Sequelize('sql11216049', 'sql11216049', 'KyjZYlWzcG', {
+    host: 'sql11.freemysqlhosting.net',
     dialect: 'mysql',
     pool: {
         max: 5,
