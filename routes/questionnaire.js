@@ -3,16 +3,16 @@ var router = express.Router();
 var db = require("../db.js");
 var auth = require("../services/Auth")
 
-router.use(auth);
+// router.use(auth);
 
 const errorCatcher = (res, sendFullError) => (error) => {
   console.error("Got error: " + JSON.stringify(error));
   if (!res.headersSent) {
     res.status(400);
     if (sendFullError) {
-      res.send(error);
+      res.json(error);
     } else {
-      res.send();
+      res.json({});
     }
   };
 }
@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
     }]
   })
     .then(results => {
-      res.send(results);
+      res.json(results);
     })
     .catch(errorCatcher(res));
 });
@@ -38,7 +38,7 @@ router.post("/create", (req, res, next) => {
       include: [db.Question.Choices]
     }]
   }).then(() => {
-    res.send("OK");
+    res.json("OK");
   })
     .catch(errorCatcher(res, true));
 });
